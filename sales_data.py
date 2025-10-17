@@ -26,3 +26,33 @@ annual_sales = [
 print("Annual Sales Totals:")
 for item in annual_sales:
     print(f"  {item['product']}: {item['total_sales']} units")
+
+
+# TODO: Use list comprehension to find products with total sales > 600
+# Return just the product names
+high_performers = [
+    prod["product"] for prod in annual_sales if prod["total_sales"] > 600
+]
+
+# Test your result
+print("High-Performing Products (>600 units):")
+for product in high_performers:
+    print(f"  {product}")
+
+
+# TODO: Use list comprehension to calculate Q4 vs Q1 growth percentage
+# Formula: ((Q4 - Q1) / Q1) * 100
+# Include products that had positive growth
+growth_analysis = [
+    {
+        "product": item["product"],
+        "growth_percentage": ((item["q4"] - item["q1"]) / item["q1"]) * 100,
+    }
+    for item in sales_data
+    if item["q4"] > item["q1"]
+]
+
+# Test your result
+print("Products with Positive Growth (Q4 vs Q1):")
+for item in growth_analysis:
+    print(f"  {item['product']}: {item['growth_percentage']:.1f}% growth")
